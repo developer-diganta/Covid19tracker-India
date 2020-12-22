@@ -1,0 +1,38 @@
+*{
+  padding:0;
+  margin:0;
+}
+*:focus {
+    outline: 0 !important;
+}
+
+.navi{
+  margin-top:2%;
+}
+
+.tab{
+  text-align: center;
+}
+
+.the{
+  cursor:pointer;
+}
+
+.no{
+  display:none;
+}
+.st{
+  border:none;
+  background: none;
+  padding: none;
+  outline:none;
+}
+.st:hover{
+  color:grey;
+}
+
+.center{
+  width:auto;
+  margin-left: auto;
+  margin-right: auto;
+}
