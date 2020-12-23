@@ -14,30 +14,66 @@
   <body>
 <div class="container-fluid navi">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
 <div class="container-fluid"  style="margin-left:10%;">
   <a class="navbar-brand" href="#"><img src="head.png" height="100" weight="100" alt=""></a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-link active" aria-current="page" href="#">Home</a>
-      <a class="nav-link" href="#">Features</a>
-      <a class="nav-link" href="#">Pricing</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </div>
-  </div>
+
 </div>
 </nav>
 </div>
 
 
+<div class="container" style="margin-bottom:5%;">
+  <div class="row">
+    <div class="col-xs-4">
+    </div>
+    <div class="col-xs-4">
+      <div class="card" style="width:auto;text-align:center">
+
+        <div class="card-body">
+          <h4 class="card-title">INDIA</h4>
+          <p class="card-text">Cases at a glance.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Total : <%=found[0].confirmed%></li>
+          <li class="list-group-item">Active : <%=found[0].active%></li>
+          <li class="list-group-item">Recovered : <%=found[0].recovered%></li>
+          <li class="list-group-item">Deceased : <%=found[0].deaths%></li>
+          <li class="list-group-item">Total Tested As Of <%=tweet.testedasof%> : <%=tweet.totalsamplestested%></li>
+          <li class="list-group-item">Last Updated : <%=tweet.updatetimestamp%></li>
+
+          <!-- <li class="list-group-item">Test positivity rate : <%=tweet.testpositivityrate%></li> -->
+        </ul>
+        <!-- <div class="card-body">
+          <!-- <a href="#" class="card-link">Card link</a> -->
+          <!-- <div class="" style="margin:auto; width:50%;">
+            <blockquote class="twitter-tweet"><a href="http://twitter.com/ICMRDELHI/status/1341585266620813314"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          </div> -->
+
+
+          <!-- <a href="#" class="card-link">Another link</a> -->
+        </div> -->
+      </div>
+
+    </div>
+    <div class="col-xs-4">
+
+    </div>
+
+  </div>
+
+
+</div>
+
 <div class="container">
-  <table class="table table-hover table-bordered tab center" id="myTable" style="border-color:black; width:80%; ">
+  <table class="table table-hover table-bordered tab center" id="myTable" style="border-color:black; width:80%;">
     <thead>
       <tr>
-        <th scope="col" onclick="sortTable(0)" style="width:40%" class="the">State<i class="fas fa-angle-up"></i>
+        <th scope="col" onclick="sortTable(0)" style="width:40%" class="the">State   <i class="fas fa-sort-up"></i>
 
 </th>
         <th scope="col" onclick="sortTableNum()">Confirmed</th>
@@ -51,19 +87,34 @@
       %>
       <tr>
         <td >
-          <form class="" action="index.html" method="post">
+          <form class="" action="/state" method="post">
 
-          <button class="st" type="submit" name="" value=""><%=found[i].state%>
+          <button class="st" type="submit" name="state" value="<%=found[i].state%>"><%=found[i].state%>
           <%if(found[i].statenotes){%>
           <span data-toggle="tooltip"  title="<%=found[i].statenotes%>"><i class="fas fa-circle" style="font-size:8px;color:blue;"></i>  </span><%}%>
         </button>
             </form>
 
         </td>
-        <td style="background-color:#5FAEFF;" class="confirmed"><%=found[i].confirmed%></td>
+        <td style="background-color:#5FAEFF;" class="confirmed"><%=found[i].confirmed%>
+                <%if(found[i].deltaconfirmed!=0){
+                  %>
+                   (<span style="color:red;"><i class="fas fa-arrow-up"></i><%=found[i].deltaconfirmed%></span>)
+                <%}%>
+        </td>
         <td style="background-color:#FAFF50" class="active"><%=found[i].active%></td>
-        <td  style="background-color:#74FF6F" class="recovered"><%=found[i].recovered%></td>
-        <td style="background-color:#F83C3C;" class="death"><%=found[i].deaths%></td>
+        <td  style="background-color:#74FF6F" class="recovered"><%=found[i].recovered%>
+          <%if(found[i].deltarecovered!=0){
+            %>
+             (<span style="color:green;"><i class="fas fa-arrow-up"></i><%=found[i].deltarecovered%></span>)
+          <%}%>
+        </td>
+        <td style="background-color:#F83C3C;" class="death"><%=found[i].deaths%>
+          <%if(found[i].deltadeaths!=0){
+            %>
+             (<span style="color:red;"><i class="fas fa-arrow-up"></i><%=found[i].deltadeaths%></span>)
+          <%}%>
+        </td>
         <td style="background-color:grey;" class="dat"><%=found[i].lastupdatedtime%></td>
       </tr>
     <%}%>
@@ -71,12 +122,31 @@
 
 
 
+
+<div id="hidden" style="display:none">
+  <%=date%>
 </div>
+
+
+</div>
+<div class="icon-bar">
+  <a href="https://www.who.int" target="_blank" class="wh"><img src="who.png" class="who" alt=""></a>
+  <a href="https://www.mohfw.gov.in/" target="_blank" class="twitter"> <img src="mohfw.jfif" class="mo" alt=""> </a>
+  <a href="https://www.icmr.gov.in/" target="_blank" class="icmr"> <img src="icmr.png" class="mo" alt=""> </a>
+  <a href="" class="arogya"> <img src="arogya.png" class="mo" alt=""> </a>
+  <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+</div>
+
+
+
+
 <cite>
   Data taken from : https://api.covid19india.org/
 
 </cite>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="master.js" charset="utf-8"> </script>
 </html>

@@ -37,8 +37,23 @@ app.get("/",function(req,res){
     const a=JSON.parse(response.body);
     // console.log(a[1].state_data);
     // console.log(a);
-
-    res.render("index",{found:a.statewise});
+    // const op={
+    //   cnf:Number,
+    //   date:String
+    // };
+    var arr=[];
+    var date=[];
+    const b=a.cases_time_series;
+    for(i=0;i<b.length;i++){
+      // var ab=new op({
+      //   cnf:b[i].dailyconfirmed;
+      //   date:b[i].date;
+      // })
+      arr.push(b[i].dailyconfirmed);
+      date.push(b[i].date);
+    }
+    console.log(a.tested.length);
+    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1]});
   });
 
 
@@ -57,8 +72,31 @@ app.get("/",function(req,res){
 //   console.log(response.body);
 // });
 
-app.get("/state",function(req,res){
-  res.write(req.body.state);
+app.post("/state",function(req,res){
+  var options = {
+    'method': 'GET',
+    'url': 'https://api.covid19india.org/state_district_wise.json',
+    // 'headers': {
+    // }
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    const a=JSON.parse(response.body);
+    // console.log(a[1].state_data);
+    // console.log(a);
+
+    console.log(a[req.body.state].districtData);
+    // for(var key in a[req.body.state].districtData){
+    //   // console.log("K : "+key);
+    //   console.log("Key : "+a[req.body.state].districtData[key].confirmed);
+    // }
+    // res.render("index",{found:a[req.body.state].districtData});
+    res.render("state",{state:req.body.state,found:a[req.body.state].districtData});
+  });
+
+
+  // res.write(req.body.state);
+  // console.log(req.body.state);
 });
 
 app.get("/s",function(req,res){
