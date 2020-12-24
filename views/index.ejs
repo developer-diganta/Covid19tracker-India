@@ -107,9 +107,9 @@
   <span style="font-size:10px;">Search for your State</span>
   <form style="padding:3px;margin-bottom:3%;" class="fo">
     <!-- <button class="btn " class="bt" > <i class="fas fa-search"></i> </button> -->
-    <div class="input-group flex-nowrap">
-  <span class="input-group-text" id="addon-wrapping" style="background:none;border-right:none;"><i class="fas fa-search" style="font-size:32px;"></i></span>
-  <input type="text" class="form-control me-2"  placeholder="eg: Delhi" aria-label="Search" id="myInput" onkeyup="myFunction()" style="border-left:none;" >
+    <div class="input-group flex-nowrap" style="  box-shadow: 2px 2px 2px 2px #888888;" >
+  <span class="input-group-text" id="addon-wrapping" style="background:none;border:none;"><i class="fas fa-search" style="font-size:32px;"></i></span>
+  <input type="text" class="form-control me-2"  placeholder="eg: Delhi" aria-label="Search" id="myInput" onkeyup="myFunction()" style="border:none;" >
 </div>
        <!-- <input class="form-control me-2 textBox" type="search" placeholder="Search"  aria-label="Search"> -->
      </form>
@@ -117,7 +117,7 @@
    <div class="table-responsive">
 
 
-  <table class="table table-hover table-bordered tab center" id="myTable" style="border-color:black; width:80%;">
+  <table class="table table-hover table-bordered tab center" id="myTable" style="border-color:black; ">
     <thead>
       <tr>
         <th scope="col" onclick="sortTable(0)" style="width:40%" class="the state">State   <i class="fas fa-sort-up"></i>
@@ -127,6 +127,7 @@
         <th scope="col" onclick="sortTableNum()">Active</th>
         <th scope="col" onclick="sortTableNum()">Recovered</th>
         <th scope="col" onclick="sortTableNum()">Death</th>
+        <th scope="col" onclick="sortTableNum()">Other<span data-toggle="tooltip"  title="Migrated/Non-Covid Deaths"><i class="fas fa-info-circle" style="font-size:10px;"></i></span></th>
         <th scope="col">Last Updated Time</th>
       </tr>
     </thead>
@@ -162,6 +163,7 @@
              (<span style="color:maroon;"><i class="fas fa-arrow-up"></i><%=found[i].deltadeaths%></span>)
           <%}%>
         </td>
+          <td style="background-color:	#FF7F50;" class="dat"><%=found[i].migratedother%></td>
         <td style="background-color:grey;" class="dat"><%=found[i].lastupdatedtime%></td>
       </tr>
     <%}%>
@@ -191,6 +193,8 @@
   Data taken from : https://api.covid19india.org/
 
 </cite>
+
+
   </body>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
