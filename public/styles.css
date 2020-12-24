@@ -59,6 +59,7 @@
 
 
 
+
 /* Style the social media icons with color, if you want */
 .icon-bar a:hover {
   width:150%;
@@ -107,4 +108,50 @@
 
 .icmr{
   background-color: lime;
+}
+
+
+
+/* input{
+  background-image:url("who.png");
+  background-position: left;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
+
+.textBox{
+background-image:url(who.png);
+background-size: contain;
+background-position:left;
+background-repeat:no-repeat;
+}
+
+.bt{
+  border-left: solid black;
+  border-top: solid black;
+  border-bottom: solid black;
+  border-right:none;
+}
+
+.form-control:focus{
+  box-shadow: none;
+}
+
+.sr{
+  width:20%;
+  text-align: center;
+  margin:0 auto;
+}
+
+
+.fo:focus{
+
+  box-shadow: 5px 10px 18px #888888;
+
+}
+
+.center1{
+  width:50%;
+  margin:auto;
 }

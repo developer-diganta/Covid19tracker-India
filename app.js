@@ -52,8 +52,13 @@ app.get("/",function(req,res){
       arr.push(b[i].dailyconfirmed);
       date.push(b[i].date);
     }
-    console.log(a.tested.length);
-    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1]});
+    console.log(a.tested[a.tested.length-2]);
+    if(a.tested[a.tested.length-1].totalsamplestested==0)
+      twt=a.tested[a.tested.length-2];
+    else
+      twt=a.tested[a.tested.length-1];
+    console.log(twt);
+    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1],twt:twt});
   });
 
 
