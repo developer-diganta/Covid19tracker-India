@@ -139,9 +139,16 @@ background-repeat:no-repeat;
 }
 
 .sr{
-  width:20%;
+  width:30%;
   text-align: center;
   margin:0 auto;
+}
+
+@media only screen and (max-width: 600px){
+
+  .sr{
+    width:60%;
+  }
 }
 
 
