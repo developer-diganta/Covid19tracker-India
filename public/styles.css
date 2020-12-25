@@ -1,6 +1,7 @@
 *{
   padding:0;
   margin:0;
+  outline:none;
 }
 *:focus {
     outline: 0 !important;
@@ -159,6 +160,7 @@ background-repeat:no-repeat;
   }
 
 }
+
 
 .fo:focus{
 
