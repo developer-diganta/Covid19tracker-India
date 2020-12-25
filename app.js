@@ -44,6 +44,7 @@ app.get("/",function(req,res){
     var arr=[];
     var date=[];
     const b=a.cases_time_series;
+    console.log(b);
     for(i=0;i<b.length;i++){
       // var ab=new op({
       //   cnf:b[i].dailyconfirmed;
@@ -58,7 +59,7 @@ app.get("/",function(req,res){
     else
       twt=a.tested[a.tested.length-1];
     console.log(twt);
-    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1],twt:twt});
+    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1],twt:twt,graph:b});
   });
 
 

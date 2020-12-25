@@ -152,6 +152,14 @@ background-repeat:no-repeat;
 }
 
 
+@media only screen and (max-width: 992px){
+
+  .nn{
+    display:none;
+  }
+
+}
+
 .fo:focus{
 
   box-shadow: 5px 10px 18px #888888;
@@ -161,4 +169,8 @@ background-repeat:no-repeat;
 .center1{
   width:50%;
   margin:auto;
+}
+
+table{
+  border-radius:20%;
 }
