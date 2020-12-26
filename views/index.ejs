@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Covi-Tracker - COVID 19 TRACKER INDIA</title>
+    <link rel = "icon" href ="ICO.png" type = "image/x-icon">
 
     <script src="https://kit.fontawesome.com/801df24b2e.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -30,14 +34,6 @@
 </div>
 </nav>
 </div>
-
-
-
-
-
-
-
-
 <div class="container">
   <div class="row">
 
@@ -103,35 +99,43 @@
 
 
     <div class="col-lg-3">
-      <a href="#" class="card-link"> <figure >
+      <a href="https://www.who.int/" class="card-link">
+        <img src="who.png" height="100" width="100" alt="">
+        <br>WHO</a>
+
+
+        <!-- <figure >
         <img src="who.png" height="100" width="100" alt="">
 
         <figcaption>WHO</figcaption>
-      </figure>  </a>
+      </figure>  </a> -->
     </div>
 
     <div class="col-lg-3">
-      <a href="#" class="card-link"> <figure >
-        <img src="mohfw.jfif" height="100" width="100" alt="">
+      <!-- <a href="#" class="card-link"> <figure >
 
         <figcaption>MOHFW</figcaption>
-      </figure>  </a>
+      </figure>  </a> -->
+      <a href="https://www.mohfw.gov.in/" target="_blank" class="card-link">
+        <img src="mohfw.jfif" height="100" width="100" alt="">
+        <br>MOHFW</a>
     </div>
 
     <div class="col-lg-3">
-      <a href="#" class="card-link"> <figure >
-        <img src="icmr.png" height="100" width="100" alt="">
+      <!-- <a href="#" class="card-link"> <figure >
 
         <figcaption>ICMR</figcaption>
-      </figure>  </a>
+      </figure>  </a> -->
+
+      <a href="https://www.icmr.gov.in/" class="card-link">
+        <img src="icmr.png" height="100" width="100" alt="">
+        <br>ICMR</a>
     </div>
 
     <div class="col-lg-3">
-      <a href="#" class="card-link"> <figure >
+      <a href="https://aarogyasetu.gov.in/" class="card-link">
         <img src="arogya.png" height="100" width="100" alt="">
-
-        <figcaption>AROGYA SETU</figcaption>
-      </figure>  </a>
+        <br>AROGYA SETU</a>
     </div>
 
 
@@ -150,6 +154,10 @@
       </div>
 
     </div>
+
+    <div style="padding:2%;">
+
+    </div>
     <div class="col-xs-4">
 
     </div>
@@ -158,7 +166,7 @@
 
   <div class="sr">
 
-  <span style="font-size:10px;">Search for your State</span>
+  <span style="font-size:10px;">Search for your State/Union Territory</span>
   <form style="padding:3px;margin-bottom:3%;" class="fo">
     <!-- <button class="btn " class="bt" > <i class="fas fa-search"></i> </button> -->
     <div class="input-group flex-nowrap" style="  box-shadow: 2px 2px 2px 2px #888888;" >
@@ -167,6 +175,10 @@
 </div>
        <!-- <input class="form-control me-2 textBox" type="search" placeholder="Search"  aria-label="Search"> -->
      </form>
+   </div>
+
+   <div style="padding:2%;">
+
    </div>
    <div class="table-responsive" id="tabb">
 
@@ -249,10 +261,6 @@
 </script>
 
 
-<cite>
-  Data taken from : https://api.covid19india.org/
-
-</cite>
 <div class="kl" style="display:none">
 
   <%for(i=0;i<graph.length;i++){
@@ -370,9 +378,13 @@ var myLineChart = new Chart(ctx, {
 
 
 <div class="container" id="gra">
+  <div class="graph"></div>
   <div id="total" style="width:100%; height:280px"></div>
+  <div class="graph"></div>
    <div id="totalrecover" style="width:100%; height:280px"></div>
+   <div class="graph"></div>
    <div id="totalD" style="width:100%; height:280px"></div>
+   <div class="graph"></div>
    <div id="chartContainer" style="width:100%; height:280px"></div>
 
 </div>
@@ -557,6 +569,23 @@ chart.render();
 
 
 
+
+<footer class="footer">
+
+Made by <a href="https://developer-diganta.github.io/me/"><button type="button" class="btn btn-outline-info">Diganta</button></a>
+
+
+<br>
+Let's stand with all the warriors fighting this battle on the frontline
+<br>
+
+<cite>
+
+  Data taken from : <a href="https://api.covid19india.org/">https://api.covid19india.org/</a>
+
+</cite>
+
+</footer>
 
 
 
