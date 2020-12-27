@@ -78,26 +78,55 @@ app.get("/",function(req,res){
 //   console.log(response.body);
 // });
 
-app.post("/state",function(req,res){
+app.get("/:state",function(req,res){
+  const stateName=req.params.state;
   var options = {
     'method': 'GET',
     'url': 'https://api.covid19india.org/state_district_wise.json',
     // 'headers': {
     // }
   };
+  var options2={
+    'method': 'GET',
+    'url': '  https://api.covid19india.org/states_daily.json',
+  }
   request(options, function (error, response) {
-    if (error) throw new Error(error);
-    const a=JSON.parse(response.body);
-    // console.log(a[1].state_data);
-    // console.log(a);
+        if (error) throw new Error(error);
+      request(options2, function (error1, response1) {
+        if (error1) throw new Error(error1);
 
-    console.log(a[req.body.state].districtData);
-    // for(var key in a[req.body.state].districtData){
-    //   // console.log("K : "+key);
-    //   console.log("Key : "+a[req.body.state].districtData[key].confirmed);
-    // }
-    // res.render("index",{found:a[req.body.state].districtData});
-    res.render("state",{state:req.body.state,found:a[req.body.state].districtData});
+
+      const a=JSON.parse(response.body);
+      // console.log(a[1].state_data);
+      // console.log(a);
+
+      console.log(a[stateName].districtData);
+      // for(var key in a[req.body.state].districtData){
+      //   // console.log("K : "+key);
+      //   console.log("Key : "+a[req.body.state].districtData[key].confirmed);
+      // }
+      // res.render("index",{found:a[req.body.state].districtData});
+      var tc=0, tr=0,td=0,ta=0;
+      var found=a[stateName].districtData;
+      var code=found.statecode;
+      const b=JSON.parse(response1.body);
+      var cnf=[];
+      var rec=[];
+      var dec=[];
+      for(i=0;i<b.length/3;i++){
+
+      }
+
+        for(var key in found){
+
+        tc=tc+found[key].confirmed;
+        tr=tr+found[key].recovered;
+        td=td+found[key].deceased;
+        ta=ta+found[key].active;
+      }
+      res.render("state",{state:stateName,found:a[stateName].districtData, tc:tc,tr:tr,td:td,ta:ta});
+      });
+
   });
 
 

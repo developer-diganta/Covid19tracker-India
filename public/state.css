@@ -1,0 +1,197 @@
+*{
+  padding:0;
+  margin:0;
+  outline:none;
+  font-family: 'Bitter', serif;
+
+}
+*:focus {
+    outline: 0 !important;
+}
+
+.navi{
+  margin-top:2%;
+}
+
+.tab{
+  text-align: center;
+}
+
+.the{
+  cursor:pointer;
+}
+
+.no{
+  display:none;
+}
+.st{
+  border:none;
+  background: none;
+  padding: none;
+  outline:none;
+}
+.st:hover{
+  color:grey;
+}
+
+.center{
+  width:auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Style the icon bar links */
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 1s ease;
+  color: white;
+  font-size: 20px;
+}
+
+
+
+
+/* Style the social media icons with color, if you want */
+.icon-bar a:hover {
+  width:150%;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  border-right:20px;
+
+  color: white;
+}
+
+.google {
+  background: #dd4b39;
+  color: white;
+}
+
+.linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.arogya {
+  background: cyan;
+  color: white;
+}
+
+.who{
+  width:50px;
+  height:50px;
+}
+
+.wh{
+  background-color: black;
+}
+
+.mo{
+  width:50px;
+  height:50px;
+}
+
+.icmr{
+  background-color: lime;
+}
+
+
+
+/* input{
+  background-image:url("who.png");
+  background-position: left;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
+
+.textBox{
+background-image:url(who.png);
+background-size: contain;
+background-position:left;
+background-repeat:no-repeat;
+}
+
+.bt{
+  border-left: solid black;
+  border-top: solid black;
+  border-bottom: solid black;
+  border-right:none;
+}
+
+.form-control:focus{
+  box-shadow: none;
+}
+
+.sr{
+  width:30%;
+  text-align: center;
+  margin:0 auto;
+}
+
+@media only screen and (max-width: 600px){
+
+  .sr{
+    width:60%;
+  }
+}
+
+
+@media only screen and (max-width: 992px){
+
+  .nn{
+    display:none;
+  }
+
+}
+
+
+.fo:focus{
+
+  box-shadow: 5px 10px 18px #888888;
+
+}
+
+.center1{
+  width:50%;
+  margin:auto;
+}
+
+table{
+  border-radius:20%;
+}
+
+
+.footer{
+  padding:5%;
+  text-align: center;
+  /* background-image: linear-gradient(to top,  #b3ffff, white); */
+
+}
+
+
+.graph{
+  padding:3%;
+}
+
+a{
+  text-decoration: none;
+}

@@ -106,14 +106,12 @@
 
         <!-- <figure >
         <img src="who.png" height="100" width="100" alt="">
-
         <figcaption>WHO</figcaption>
       </figure>  </a> -->
     </div>
 
     <div class="col-lg-3">
       <!-- <a href="#" class="card-link"> <figure >
-
         <figcaption>MOHFW</figcaption>
       </figure>  </a> -->
       <a href="https://www.mohfw.gov.in/" target="_blank" class="card-link">
@@ -123,7 +121,6 @@
 
     <div class="col-lg-3">
       <!-- <a href="#" class="card-link"> <figure >
-
         <figcaption>ICMR</figcaption>
       </figure>  </a> -->
 
@@ -145,7 +142,6 @@
 
           <!-- <div class="" style="margin:auto; width:50%;">
             <blockquote class="twitter-tweet"><a href="http://twitter.com/ICMRDELHI/status/1341585266620813314"></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
           </div> -->
 
 
@@ -201,13 +197,9 @@
       %>
       <tr>
         <td >
-          <form class="" action="/state" method="post">
-
-          <button class="st" type="submit" name="state" value="<%=found[i].state%>"><%=found[i].state%>
+          <a href="/<%=found[i].state%>" class="st" style="color:black;"><%=found[i].state%></a>
           <%if(found[i].statenotes){%>
           <span data-toggle="tooltip"  title="<%=found[i].statenotes%>"><i class="fas fa-circle" style="font-size:8px;color:blue;"></i>  </span><%}%>
-        </button>
-            </form>
 
         </td>
         <td style="background-color:#5FAEFF;" class="confirmed"><%=found[i].confirmed%>
@@ -253,7 +245,6 @@
 </div> -->
 
 <script type="text/javascript">
-
   var gg=[];
   var dd=[];
   var ttr=[];
@@ -268,14 +259,10 @@
     <span class="vv"> <%=graph[i].totalconfirmed%> </span>
     <span class="tr"> <%=graph[i].totalrecovered%> </span>
     <span class="td"> <%=graph[i].totaldeceased%> </span>
-
-
 <!--
     <script>
-
     var a=document.getElementById("dc");
     gg.push(a.innerHTML);
-
     </script> -->
   <%}%>
   <script type="text/javascript">
@@ -283,17 +270,14 @@
   for(i=0;i<a.length;i++){
     gg.push(a[i].innerHTML);
   }
-
   var t=document.getElementsByClassName("vv");
   for(i=0;i<t.length;i++){
     dd.push(t[i].innerHTML);
   }
-
   var r=document.getElementsByClassName("tr");
   for(i=0;i<r.length;i++){
     ttr.push(r[i].innerHTML);
   }
-
   var d=document.getElementsByClassName("td");
   for(i=0;i<d.length;i++){
     td.push(d[i].innerHTML);
@@ -306,9 +290,7 @@
   console.log(gg);
 </script>
 <!-- <canvas id="myChart" width="400" height="400"></canvas>
-
 <script type="text/javascript">
-
 var ctx = document.getElementById('myChart').getContext('2d');
 var myLineChart = new Chart(ctx, {
   type: 'line',
@@ -336,21 +318,16 @@ var myLineChart = new Chart(ctx, {
 
   <!-- <div id="chartContainer" style="height: 300px; width: 100%;">
   </div>
-
-
-
   <script type="text/javascript">
  window.onload = function () {
    var chart = new CanvasJS.Chart("chartContainer",
    {
-
      title:{
      text: "Earthquakes - per month"
      },
       data: [
      {
        type: "line",
-
        dataPoints: [
        {y: 450 }
        ]
@@ -359,17 +336,13 @@ var myLineChart = new Chart(ctx, {
    });
    chart.render();
  }
-
-
  </script>
-
  <div>
    <script type="text/javascript">
    for(i=0;i<gg.length();i++){
      var length = chart.options.data[0].dataPoints.length;
      // chart.options.data[0].dataPoints[length-1].x=gg[i].
      chart.options.data[0].dataPoints[length-1].y =gg[i].dailyconfirmed;
-
    }
    	chart.render();
    </script> -->
@@ -406,18 +379,13 @@ var myLineChart = new Chart(ctx, {
     axisY:{
       title:"Number Of Cases"
     },
-
     data: [
     {
       type: "spline",
       color:"#5FAEFF",
       dataPoints: [
         {
-
-
-
 				 x: 0, y: 1,  indexLabel: "30th JAN 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
-
        }
       ]
     }
@@ -425,17 +393,11 @@ var myLineChart = new Chart(ctx, {
   });
   chart1.render();
   for(b=1;b<dd.length;b++){
-
  var length = chart1.options.data[0].dataPoints.length;
  console.log(dd[b]);
  chart1.options.data[0].dataPoints.push({ y: parseInt(dd[b])});
  chart1.render();
  }
-
-
-
-
-
  var chart2 = new CanvasJS.Chart("totalrecover", {
    title: {
      text: "Total Recovered"
@@ -446,38 +408,25 @@ var myLineChart = new Chart(ctx, {
    axisY:{
      title:"Number Of Cases"
    },
-
    data: [
    {
      type: "spline",
      color:"green",
      dataPoints: [
        {
-
-
-
         x: 0, y: 0,  indexLabel: "30th JAN 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
-
       }
      ]
    }
    ]
  });
  chart2.render();
-
  for(b=1;b<ttr.length;b++){
-
 var length = chart2.options.data[0].dataPoints.length;
 console.log(ttr[b]);
 chart2.options.data[0].dataPoints.push({ y: parseInt(ttr[b])});
 chart2.render();
 }
-
-
-
-
-
-
 var chart3 = new CanvasJS.Chart("totalD", {
   title: {
     text: "Total Deceased"
@@ -488,18 +437,13 @@ var chart3 = new CanvasJS.Chart("totalD", {
   axisY:{
     title:"Number Of Deaths"
   },
-
   data: [
   {
     type: "spline",
     color:"red",
     dataPoints: [
       {
-
-
-
        x: 0, y: 1,  indexLabel: "30th JAN 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
-
      }
     ]
   }
@@ -507,25 +451,11 @@ var chart3 = new CanvasJS.Chart("totalD", {
 });
 chart3.render();
 for(b=1;b<td.length;b++){
-
 var length = chart3.options.data[0].dataPoints.length;
 console.log(td[b]);
 chart3.options.data[0].dataPoints.push({ y: parseInt(td[b])});
 chart3.render();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
  	var chart = new CanvasJS.Chart("chartContainer", {
  		title: {
  			text: "Daily Confirmed"
@@ -536,7 +466,6 @@ chart3.render();
     axisY:{
       title:"Number Of Cases Per Day"
     },
-
  		data: [
  		{
  			type: "spline",
@@ -550,7 +479,6 @@ chart3.render();
  	});
  	chart.render();
   for(b=1;b<gg.length;b++){
-
 var length = chart.options.data[0].dataPoints.length;
 chart.options.title.text = "Daily Confirmed";
 console.log(gg[b]);
