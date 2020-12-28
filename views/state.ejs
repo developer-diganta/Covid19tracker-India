@@ -126,6 +126,183 @@
 
 
 
+<script type="text/javascript">
+  var gg=[];
+  var dd=[];
+  var ttr=[];
+  var td=[];
+</script>
+
+
+<div class="kl" style="display:none">
+
+  <%for(i=0;i<cnf.length;i++){
+    %>
+    <span class="vv"> <%=cnf[i]%> </span>
+    <span class="tr"> <%=rec[i]%> </span>
+    <span class="td"> <%=dec[i]%> </span>
+
+  <%}%>
+  <script type="text/javascript">
+ t=document.getElementsByClassName("vv");
+  for(i=0;i<t.length;i++){
+    dd.push(t[i].innerHTML);
+  }
+  var r=document.getElementsByClassName("tr");
+  for(i=0;i<r.length;i++){
+    ttr.push(r[i].innerHTML);
+  }
+  var d=document.getElementsByClassName("td");
+  for(i=0;i<d.length;i++){
+    td.push(d[i].innerHTML);
+  }
+  </script>
+
+</div>
+
+
+
+
+
+
+<div class="container" id="gra">
+
+  <div class="graph"></div>
+   <div id="totalrecover" style="width:100%; height:280px"></div>
+   <div class="graph"></div>
+   <div id="totalD" style="width:100%; height:280px"></div>
+   <div class="graph"></div>
+   <div id="chartContainer" style="width:100%; height:280px"></div>
+
+</div>
+
+
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+<script type="text/javascript">
+
+ window.onload = function () {
+var chart2 = new CanvasJS.Chart("totalrecover", {
+  title: {
+    text: "Daily Confirmed"
+  },
+  axisX:{
+    title:"Total Number Of Days"
+  },
+  axisY:{
+    title:"Number Of Cases per day"
+  },
+  data: [
+  {
+    type: "spline",
+    color:"blue",
+    dataPoints: [
+      {
+       x: 0, y: 0,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
+     }
+    ]
+  }
+  ]
+});
+chart2.render();
+for(b=1;b<ttr.length;b++){
+var length = chart2.options.data[0].dataPoints.length;
+console.log(dd[b]);
+chart2.options.data[0].dataPoints.push({ y: parseInt(dd[b])});
+chart2.render();
+}
+var chart3 = new CanvasJS.Chart("totalD", {
+ title: {
+   text: "Daily Recovered"
+ },
+ axisX:{
+   title:"Total Number Of Days"
+ },
+ axisY:{
+   title:"Number Of Recoveries per day"
+ },
+ data: [
+ {
+   type: "spline",
+   color:"green",
+   dataPoints: [
+     {
+      x: 0, y: 1,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
+    }
+   ]
+ }
+ ]
+});
+chart3.render();
+for(b=1;b<td.length;b++){
+var length = chart3.options.data[0].dataPoints.length;
+console.log(ttr[b]);
+chart3.options.data[0].dataPoints.push({ y: parseInt(ttr[b])});
+chart3.render();
+}
+ var chart = new CanvasJS.Chart("chartContainer", {
+   title: {
+     text: "Daily Deceased"
+   },
+   axisX:{
+     title:"Total Number Of Days"
+   },
+   axisY:{
+     title:"Number Of Deaths Per Day"
+   },
+   data: [
+   {
+     type: "spline",
+     color:"red",
+     dataPoints: [
+       {
+           x: 0, y: 1,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red" }
+     ]
+   }
+   ]
+ });
+ chart.render();
+ for(b=1;b<td.length;b++){
+var length = chart.options.data[0].dataPoints.length;
+console.log(td[b]);
+chart.options.data[0].dataPoints.push({ y: parseInt(td[b])});
+chart.render();
+}
+}
+</script>
+
+
+
+
+
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+
+<footer class="footer">
+
+Made by <a href="https://developer-diganta.github.io/me/"><button type="button" class="btn btn-outline-info">Diganta</button></a>
+
+
+<br>
+Let's stand with all the warriors fighting this battle on the frontline
+<br>
+
+<cite>
+
+ Data taken from : <a href="https://api.covid19india.org/">https://api.covid19india.org/</a>
+
+</cite>
+
+</footer>
+
+
+
+
 
 
 

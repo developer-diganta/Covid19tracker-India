@@ -107,24 +107,58 @@ app.get("/:state",function(req,res){
       // }
       // res.render("index",{found:a[req.body.state].districtData});
       var tc=0, tr=0,td=0,ta=0;
-      var found=a[stateName].districtData;
+      var found=a[stateName];
       var code=found.statecode;
-      const b=JSON.parse(response1.body);
+      const c=JSON.parse(response1.body);
+      console.log(c);
       var cnf=[];
       var rec=[];
       var dec=[];
-      for(i=0;i<b.length/3;i++){
+      var tot=[];
+      var b=c.states_daily;
+      // for(i=0;i<b.length;i+=3){
+      //     cnf.push(b.states_daily[i].code);
+      // }
+      // for(i=1;i<b.length;i+=3){
+      //     rec.push(b.states_daily[i].code);
+      // }
+      //
+      // for(i=2;i<b.length;i+=3){
+      //     dec.push(b.states_daily[i].code);
+      // }
+      code=code.toLowerCase();
+      var jk;
+for(jk in b){
 
+}
+console.log(jk);
+console.log(tot);
+console.log(code);
+for(i=0;i<=jk;i++){
+  tot.push(b[i][code]);
+}
+for(i=0;i<=jk;i+=3){
+  cnf.push(tot[i]);
+}
+for(i=1;i<=jk;i+=3){
+  rec.push(tot[i]);
+}
+for(i=2;i<=jk;i+=3){
+  dec.push(tot[i]);
+}
+console.log(tot);
+var fou=a[stateName].districtData;
+        for(var key in fou){
+          console.log(key);
+        console.log(fou[key].confirmed);
+
+        tc=tc+parseInt(fou[key].confirmed);
+        tr=tr+parseInt(fou[key].recovered);
+        td=td+parseInt(fou[key].deceased);
+        ta=ta+parseInt(fou[key].active);
       }
-
-        for(var key in found){
-
-        tc=tc+found[key].confirmed;
-        tr=tr+found[key].recovered;
-        td=td+found[key].deceased;
-        ta=ta+found[key].active;
-      }
-      res.render("state",{state:stateName,found:a[stateName].districtData, tc:tc,tr:tr,td:td,ta:ta});
+      // console.log(b);
+      res.render("state",{state:stateName,found:a[stateName].districtData, tc:tc,tr:tr,td:td,ta:ta,cnf:cnf,rec:rec,dec:dec});
       });
 
   });
