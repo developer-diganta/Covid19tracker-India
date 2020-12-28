@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="state.css">
   </head>
   <body>
+
+
+    <div id="loading">
+  <img id="loading-image" src="load.gif" alt="Loading..." />
+</div>
+
+
+
 <div class="container-fluid navi">
 
   <nav class="navbar navbar-expand-lg navbar-light" >
@@ -209,7 +217,7 @@ var chart2 = new CanvasJS.Chart("totalrecover", {
 chart2.render();
 for(b=1;b<ttr.length;b++){
 var length = chart2.options.data[0].dataPoints.length;
-console.log(dd[b]);
+
 chart2.options.data[0].dataPoints.push({ y: parseInt(dd[b])});
 chart2.render();
 }
@@ -221,7 +229,7 @@ var chart3 = new CanvasJS.Chart("totalD", {
    title:"Total Number Of Days"
  },
  axisY:{
-   title:"Number Of Recoveries per day"
+   title:"Number Of Recoveries per day",
  },
  data: [
  {
@@ -229,7 +237,7 @@ var chart3 = new CanvasJS.Chart("totalD", {
    color:"green",
    dataPoints: [
      {
-      x: 0, y: 1,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
+      x: 0, y: 0,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red"
     }
    ]
  }
@@ -238,7 +246,7 @@ var chart3 = new CanvasJS.Chart("totalD", {
 chart3.render();
 for(b=1;b<td.length;b++){
 var length = chart3.options.data[0].dataPoints.length;
-console.log(ttr[b]);
+if(ttr[b]>=0)
 chart3.options.data[0].dataPoints.push({ y: parseInt(ttr[b])});
 chart3.render();
 }
@@ -258,7 +266,7 @@ chart3.render();
      color:"red",
      dataPoints: [
        {
-           x: 0, y: 1,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red" }
+           x: 0, y: 0,  indexLabel: "14th MAR 2020", indexLabelOrientation: "horizontal", indexLabelFontColor: "red" }
      ]
    }
    ]
@@ -266,7 +274,7 @@ chart3.render();
  chart.render();
  for(b=1;b<td.length;b++){
 var length = chart.options.data[0].dataPoints.length;
-console.log(td[b]);
+
 chart.options.data[0].dataPoints.push({ y: parseInt(td[b])});
 chart.render();
 }
@@ -300,39 +308,11 @@ Let's stand with all the warriors fighting this battle on the frontline
 
 </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+  $(window).load(function() {
+    $('#loading').hide();
+  });
+</script>
 
 
 

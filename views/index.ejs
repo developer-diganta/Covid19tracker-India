@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div id="loading">
+
+  <img id="loading-image" src="load.gif" alt="Loading..." />
+</div>
 <div class="container-fluid navi">
 
   <nav class="navbar navbar-expand-lg navbar-light" >
@@ -514,6 +518,14 @@ Let's stand with all the warriors fighting this battle on the frontline
 </cite>
 
 </footer>
+
+
+
+<script>
+  $(window).load(function() {
+    $('#loading').hide();
+  });
+</script>
 
 
 
