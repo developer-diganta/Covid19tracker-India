@@ -16,10 +16,6 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div id="loading">
-
-  <img id="loading-image" src="load.gif" alt="Loading..." />
-</div>
 <div class="container-fluid navi">
 
   <nav class="navbar navbar-expand-lg navbar-light" >
@@ -55,12 +51,16 @@
           <li class="list-group-item">Recovered : <%=found[0].recovered%></li>
           <li class="list-group-item">Deceased : <%=found[0].deaths%></li>
           <li class="list-group-item">Total Tested As Of <%=twt.testedasof%> : <%=twt.totalsamplestested%> (Updated On : <%=twt.updatetimestamp%>)
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fab fa-twitter"></i></button>
+        </li>
+          <li class="list-group-item">Vaccinated 1st Dose : <%=firstVaccineDose%></li>
+          <li class="list-group-item">Vaccinated 2nd Dose : <%=secondVaccineDose%></li>
+          <li class="list-group-item">Vaccinations updated as of : <%=vaccineTime%></li>
 
 
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="fab fa-twitter"></i>
-            </button>
+
+
 
 
 
@@ -101,8 +101,8 @@
         <div class="card-body">
   <div class="row">
 
-
-    <div class="col-lg-3">
+<div class="col-lg-1"></div>
+    <div class="col-lg-2">
       <a href="https://www.who.int/" class="card-link">
         <img src="who.png" height="100" width="100" alt="">
         <br>WHO</a>
@@ -114,7 +114,7 @@
       </figure>  </a> -->
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <!-- <a href="#" class="card-link"> <figure >
         <figcaption>MOHFW</figcaption>
       </figure>  </a> -->
@@ -123,7 +123,7 @@
         <br>MOHFW</a>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <!-- <a href="#" class="card-link"> <figure >
         <figcaption>ICMR</figcaption>
       </figure>  </a> -->
@@ -133,15 +133,21 @@
         <br>ICMR</a>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-2">
+      <a href="https://www.cowin.gov.in/home" class="card-link">
+        <img src="https://prod-cdn.preprod.co-vin.in/assets/images/covid19logo.jpg" height="100" width="100" alt="">
+        <br>COWIN</a>
+    </div>
+
+    <div class="col-lg-2">
       <a href="https://aarogyasetu.gov.in/" class="card-link">
         <img src="arogya.png" height="100" width="100" alt="">
         <br>AROGYA SETU</a>
     </div>
+    <div class="col-lg-1"></div>
 
 
   </div>
-
 
 
           <!-- <div class="" style="margin:auto; width:50%;">
@@ -198,6 +204,7 @@
       </tr>
     </thead>
     <% for(i=1;i<found.length;i++){
+      console.log(vaccine[found[i].statecode].total.vaccinated);
       %>
       <tr>
         <td >
@@ -228,7 +235,7 @@
           <td style="background-color:	#FF7F50;" class="dat"><%=found[i].migratedother%></td>
         <td style="background-color:grey;" class="dat"><%=found[i].lastupdatedtime%></td>
       </tr>
-    <%}%>
+    <%}
   </table>
  </div>
 
@@ -291,7 +298,7 @@
 </div>
 
 <script type="text/javascript">
-  console.log(gg);
+  // console.log(gg);
 </script>
 <!-- <canvas id="myChart" width="400" height="400"></canvas>
 <script type="text/javascript">
@@ -398,7 +405,7 @@ var myLineChart = new Chart(ctx, {
   chart1.render();
   for(b=1;b<dd.length;b++){
  var length = chart1.options.data[0].dataPoints.length;
- console.log(dd[b]);
+ // console.log(dd[b]);
  chart1.options.data[0].dataPoints.push({ y: parseInt(dd[b])});
  chart1.render();
  }
@@ -427,7 +434,7 @@ var myLineChart = new Chart(ctx, {
  chart2.render();
  for(b=1;b<ttr.length;b++){
 var length = chart2.options.data[0].dataPoints.length;
-console.log(ttr[b]);
+// console.log(ttr[b]);
 chart2.options.data[0].dataPoints.push({ y: parseInt(ttr[b])});
 chart2.render();
 }
@@ -456,7 +463,7 @@ var chart3 = new CanvasJS.Chart("totalD", {
 chart3.render();
 for(b=1;b<td.length;b++){
 var length = chart3.options.data[0].dataPoints.length;
-console.log(td[b]);
+// console.log(td[b]);
 chart3.options.data[0].dataPoints.push({ y: parseInt(td[b])});
 chart3.render();
 }
@@ -485,7 +492,7 @@ chart3.render();
   for(b=1;b<gg.length;b++){
 var length = chart.options.data[0].dataPoints.length;
 chart.options.title.text = "Daily Confirmed";
-console.log(gg[b]);
+// console.log(gg[b]);
 chart.options.data[0].dataPoints.push({ y: parseInt(gg[b])});
 chart.render();
 }

@@ -1,7 +1,10 @@
 const express=require("express");
 const https=require("https");
 const bodyParser=require("body-parser");
-  var request = require('request');
+var request = require('request');
+const csv = require('csv-parser');
+const fs = require('fs');
+
 const app=express();
 app.set("view engine","ejs");
 
@@ -10,81 +13,58 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 app.get("/",function(req,res){
-  // var request = require('request');
-  // var options = {
-  //   'method': 'GET',
-  //   'url': 'https://covid-19india-api.herokuapp.com/v2.0/state_data',
-  //   'headers': {
-  //   }
-  // };
-  // request(options, function (error, response) {
-  //   if (error) throw new Error(error);
-  //   console.log(response.body[1]);
-  //   // res.send(response.body);
-  //   // res.render("index",{found:response.body.state_data});
-  // });
-  // var request = require('request');
   var options = {
     'method': 'GET',
     'url': 'https://api.covid19india.org/data.json',
-    // 'headers': {
-    // }
   };
-
+  var options2 = {
+    'method': 'GET',
+    'url': 'https://api.covid19india.org/v4/min/data.min.json',
+  };
 
   request(options, function (error, response) {
     if (error) throw new Error(error);
     const a=JSON.parse(response.body);
-    // console.log(a[1].state_data);
-    // console.log(a);
-    // const op={
-    //   cnf:Number,
-    //   date:String
-    // };
     var arr=[];
     var date=[];
+    const tested=a.tested;
+    if(a.tested[a.tested.length-1].firstdoseadministered==0){
+      var firstdoseadministered=a.tested[a.tested.length-2].firstdoseadministered;
+      var seconddoseadministered=a.tested[a.tested.length-2].seconddoseadministered;
+      var time_vaccine=a.tested[a.tested.length-2].updatetimestamp;
+    }
+    else{
+      var firstdoseadministered=a.tested[a.tested.length-1].firstdoseadministered;
+      var seconddoseadministered=a.tested[a.tested.length-1].seconddoseadministered;
+      var time_vaccine=a.tested[a.tested.length-1].updatetimestamp;
+    }
     const b=a.cases_time_series;
-    console.log(b);
     for(i=0;i<b.length;i++){
-      // var ab=new op({
-      //   cnf:b[i].dailyconfirmed;
-      //   date:b[i].date;
-      // })
       arr.push(b[i].dailyconfirmed);
       date.push(b[i].date);
     }
-    console.log(a.tested[a.tested.length-2]);
     if(a.tested[a.tested.length-1].totalsamplestested==0)
       twt=a.tested[a.tested.length-2];
     else
       twt=a.tested[a.tested.length-1];
-    console.log(twt);
-    res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1],twt:twt,graph:b});
+    request(options2, function (error, response) {
+      if (error) throw new Error(error);
+      const stateVaccineData=JSON.parse(response.body);
+      console.log(stateVaccineData.WB.districts.Jalpaiguri.delta7.vaccinated);
+      res.render("index",{found:a.statewise,data:arr,date:date,tweet:a.tested[a.tested.length-1],twt:twt,graph:b,firstVaccineDose:firstdoseadministered,secondVaccineDose:seconddoseadministered,vaccineTime:time_vaccine,vaccine:stateVaccineData});
+    });
+
   });
 
 
 });
 
 
-// var options2 = {
-// 'method': 'GET',
-// 'url': 'http://covid19-india-adhikansh.herokuapp.com/state/Andhra Pradesh?=',
-// 'headers': {
-// }
-// };
-// request(options, function (error, response) {
-//   if (error) throw new Error(error);
-//   const b=JSON.parse(response.body);
-//   console.log(response.body);
-// });
-
 app.get("/:state",function(req,res){
   const stateName=req.params.state;
   var options = {
     'method': 'GET',
     'url': 'https://api.covid19india.org/state_district_wise.json',
-    // 'headers': {
-    // }
   };
   var options2={
     'method': 'GET',
@@ -97,15 +77,8 @@ app.get("/:state",function(req,res){
 
 
       const a=JSON.parse(response.body);
-      // console.log(a[1].state_data);
-      // console.log(a);
 
       console.log(a[stateName].districtData);
-      // for(var key in a[req.body.state].districtData){
-      //   // console.log("K : "+key);
-      //   console.log("Key : "+a[req.body.state].districtData[key].confirmed);
-      // }
-      // res.render("index",{found:a[req.body.state].districtData});
       var tc=0, tr=0,td=0,ta=0;
       var found=a[stateName];
       var code=found.statecode;
@@ -116,16 +89,7 @@ app.get("/:state",function(req,res){
       var dec=[];
       var tot=[];
       var b=c.states_daily;
-      // for(i=0;i<b.length;i+=3){
-      //     cnf.push(b.states_daily[i].code);
-      // }
-      // for(i=1;i<b.length;i+=3){
-      //     rec.push(b.states_daily[i].code);
-      // }
-      //
-      // for(i=2;i<b.length;i+=3){
-      //     dec.push(b.states_daily[i].code);
-      // }
+
       code=code.toLowerCase();
       var jk;
 for(jk in b){
